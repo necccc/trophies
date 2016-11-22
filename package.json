@@ -1,0 +1,21 @@
+{
+  "name": "thropies",
+  "version": "1.0.0",
+  "description": "Trophies is a tool to save EPUB books from Safari Books online",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "repository": "https://github.com/necccc/trophies",
+  "keywords": [
+    "Electron",
+    "epub",
+    "safaribooks",
+    "books"
+  ],
+  "author": "nec@shell8.net",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^1.4.1"
+  }
+}
