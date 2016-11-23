@@ -17,5 +17,8 @@
   "license": "MIT",
   "devDependencies": {
     "electron": "^1.4.1"
+  },
+  "dependencies": {
+    "epub-gen": "0.0.17"
   }
 }

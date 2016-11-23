@@ -1,6 +1,10 @@
+
+//const MAIN_URL = 'https://www.safaribooksonline.com/'
+const MAIN_URL = 'https://www.safaribooksonline.com/library/view/you-dont-know/9781491905241/ch03.html'
+
 const electron = require('electron')
 const contextMenu = require('./lib/contextmenu')
-const safaribooks = require('./lib/safaribooks') 
+const safaribooks = require('./lib/safaribooks')
 
 const { app, Menu, BrowserWindow } = electron;
 
@@ -19,7 +23,7 @@ function createWindow () {
     }
   })
 
-  mainWindow.loadURL('https://www.safaribooksonline.com/')
+  mainWindow.loadURL(MAIN_URL)
 
   let contents = mainWindow.webContents
 
