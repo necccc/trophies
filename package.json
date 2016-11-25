@@ -19,6 +19,7 @@
     "electron": "^1.4.1"
   },
   "dependencies": {
+    "async": "^2.1.4",
     "epub-gen": "0.0.17"
   }
 }
