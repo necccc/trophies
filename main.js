@@ -34,9 +34,6 @@ function createWindow () {
 
   contents.openDevTools()
 
-  //contents.on('did-finish-load', () => {
-  //})
-
   contents.on('context-menu', (event, params) => contextMenu(site, book, mainWindow, params.x, params.y))
 
   mainWindow.on('closed', function () {
