@@ -16,40 +16,45 @@ let mainWindow
 
 function createWindow () {
 
-  mainWindow = new BrowserWindow({
-    width: 1280,
-    height: 900,
-    webPreferences: {
-      devTools: true,
-      nodeIntegration: false
-    }
-  })
+    mainWindow = new BrowserWindow(
+        {
+            width: 1280,
+            height: 900,
+            webPreferences: {
+            devTools: true,
+            nodeIntegration: false
+        }
+    })
 
-  mainWindow.loadURL(MAIN_URL)
+    mainWindow.loadURL(MAIN_URL)
 
-  let contents = mainWindow.webContents
+    let contents = mainWindow.webContents
 
-  const book = bookModel(contents)
-  const site = siteModel(contents)
+    const book = bookModel(contents)
+    const site = siteModel(contents)
 
-  contents.openDevTools()
+    contents.openDevTools()
 
-  contents.on('context-menu', (event, params) => contextMenu(site, book, mainWindow, params.x, params.y))
+    contents.on('context-menu', (event, params) => {
+        return contextMenu(site, book, mainWindow, params.x, params.y)
+    })
 
-  mainWindow.on('closed', function () {
-    mainWindow = null
-    app.quit()
-  })
+    mainWindow.on('closed', function () {
+        mainWindow = null
+        app.quit()
+    })
 }
+
 
 app.on('ready', createWindow)
 app.on('window-all-closed', function () {
-  if (process.platform !== 'darwin') {
-    app.quit()
-  }
+    if (process.platform !== 'darwin') {
+        app.quit()
+    }
 })
+
 app.on('activate', function () {
-  if (mainWindow === null) {
-    createWindow()
-  }
+    if (mainWindow === null) {
+        createWindow()
+    }
 })
