@@ -4,7 +4,10 @@
   "description": "Trophies is a tool to save EPUB books from Safari Books online",
   "main": "main.js",
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "pack": "build --dir",
+    "dist": "build",
+    "postinstall": "install-app-deps"
   },
   "repository": "https://github.com/necccc/trophies",
   "keywords": [
@@ -16,10 +19,20 @@
   "author": "nec@shell8.net",
   "license": "MIT",
   "devDependencies": {
-    "electron": "^1.4.1"
+    "electron": "^1.4.1",
+    "electron-builder": "^10.6.1"
   },
   "dependencies": {
     "async": "^2.1.4",
     "epub-gen": "0.0.17"
+  },
+  "build": {
+    "appId": "",
+    "mac": {
+      "category": "your.app.category.type"
+    },
+    "win": {
+      "iconUrl": "(windows-only) https link to icon"
+    }
   }
 }

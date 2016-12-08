@@ -35,6 +35,16 @@ function createWindow () {
 
     contents.openDevTools()
 
+
+    //const ProgressWindow = require('./progressWindow')
+
+    //let progressw = new ProgressWindow(mainWindow)
+
+    //progressw.open()
+
+
+
+
     contents.on('context-menu', (event, params) => {
         return contextMenu(site, book, mainWindow, params.x, params.y)
     })
