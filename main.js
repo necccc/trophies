@@ -33,16 +33,7 @@ function createWindow () {
     const book = bookModel(contents)
     const site = siteModel(contents)
 
-    contents.openDevTools()
-
-
-    //const ProgressWindow = require('./progressWindow')
-
-    //let progressw = new ProgressWindow(mainWindow)
-
-    //progressw.open()
-
-
+    //contents.openDevTools()
 
 
     contents.on('context-menu', (event, params) => {

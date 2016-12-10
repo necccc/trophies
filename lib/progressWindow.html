@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Progress</title>
+    <script>
+        const url = require('url')
+        const path = require('path')
+        const ipcRenderer = require('electron').ipcRenderer
+
+
+        let mdl_css = document.createElement('link')
+            mdl_css.setAttribute('rel', 'stylesheet')
+            mdl_css.setAttribute('href', url.format({
+                pathname: path.join(__dirname, 'assets/material.min.css'),
+                protocol: 'file:',
+                slashes: true
+            }))
+        document.querySelector('head').appendChild(mdl_css)
+        let css = document.createElement('link')
+            css.setAttribute('rel', 'stylesheet')
+            css.setAttribute('href', url.format({
+                pathname: path.join(__dirname, 'assets/styles.css'),
+                protocol: 'file:',
+                slashes: true
+            }))
+        document.querySelector('head').appendChild(css)
+        let js = document.createElement('script')
+            js.setAttribute('src', url.format({
+                pathname: path.join(__dirname, 'assets/material.min.js'),
+                protocol: 'file:',
+                slashes: true
+            }))
+        document.querySelector('head').appendChild(js)
+    </script>
+  </head>
+  <body>
+
+    <div class="mdl-grid">
+        <div class="mdl-cell mdl-cell--12-col">
+            <h3>Working...</h3>
+            <p class="center">Saving to []</p>
+
+            <div id="p1" class="mdl-progress mdl-js-progress"></div>
+            <script>
+                document.querySelector('#p1').addEventListener('mdl-componentupgraded', function() {
+
+                    const updateProgress = (progress) => {
+                        this.MaterialProgress.setProgress(progress.percent);
+
+                        document.querySelector('.progress-current').innerText = progress.current
+                        document.querySelector('.progress-total').innerText = progress.total
+                        document.querySelector('.progress-title').innerText = progress.title
+                    }
+
+                    ipcRenderer.on('progress', (event, message) => {
+                        updateProgress(JSON.parse(message))
+                    })
+
+                    ipcRenderer.send('asynchronous-message', 'progressReady')
+
+                });
+            </script>
+
+            <p class="center progress">
+                <small><span class="progress-current">1</span> / <span class="progress-total">12</span> - <em class="progress-title">Chapter title</em></small>
+            </p>
+
+
+        </div>
+    </div>
+
+  </body>
+
+  <script>
+
+    // You can also require other files to run in this process
+
+
+
+    //
+  </script>
+</html>
